@@ -1,3 +1,4 @@
+const PORT = process.env.PORT || 3000; 
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routers/authRouter');
@@ -26,7 +27,7 @@ app.use(cookieParser());
 // database connection
 const dbURI = 'mongodb://localhost:27017/node-auth';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
-  .then((result) => app.listen(3000))
+  .then((result) => app.listen(PORT))
   .catch((err) => console.log(err));
 // routes
 app.get('*',checkUser);
